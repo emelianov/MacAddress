@@ -48,7 +48,7 @@ bool MacAddress::fromString(const char *address)
     while (*address)
     {
         char c = *address++;
-        if (c >= '0' && c <= '9')
+        if (isHex(c))
         {
             acc = acc * 16 + (c - '0');
             if (acc > 255) {
@@ -56,10 +56,10 @@ bool MacAddress::fromString(const char *address)
                 return false;
             }
         }
-        else if (c == '-')
+        else if (c == '-' || c == ':')
         {
             if (dots == 5) {
-                // Too much dots (there must be 3 dots)
+                // Too much separators (there must be 5)
                 return false;
             }
             _mac[dots++] = acc;

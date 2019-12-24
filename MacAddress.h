@@ -61,7 +61,7 @@ public:
     operator char*() {
       if (!_str) {
         _str = (char*)malloc(18);
-        sprintf(_str, "%02X-02X-02X-02X-02X-02X", _mac[0], _mac[1], _mac[2], _mac[3], _mac[4], _mac[5]);
+        sprintf(_str, "%02X-%02X-%02X-%02X-%02X-%02X", _mac[0], _mac[1], _mac[2], _mac[3], _mac[4], _mac[5]);
       }
       return _str;
     }
